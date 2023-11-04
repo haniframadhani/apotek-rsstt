@@ -10,7 +10,15 @@ website sistem informasi apotek Rumah Sakit Sudah Takdir Tuhan
 
 clone with git
 
-```git clone https://github.com/haniframadhani/apotek-rsstt.git```
+```
+git clone https://github.com/haniframadhani/apotek-rsstt.git
+```
+
+Go to the project directory
+
+```
+cd apotek-rsstt
+```
 
 Go to the project directory
 
