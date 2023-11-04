@@ -23,17 +23,6 @@ class Obat_model
     return $this->db->single();
   }
 
-  // public function tambahObat($data)
-  // {
-  //   $query = "INSERT INTO obat VALUES (:kode, :nama, :expired)";
-  //   $this->db->query($query);
-  //   $this->db->bind('kode', $data['kode']);
-  //   $this->db->bind('nama', $data['nama']);
-  //   $this->db->bind('kode', $data['kode']);
-  //   $this->db->execute();
-  //   return $this->db->rowCount();
-  // }
-
   public function tambahDataObat($data)
   {
     $query = "INSERT INTO obat (
@@ -43,6 +32,7 @@ class Obat_model
       stok,
       unit,
       efek_samping,
+      indikasi,
       kontradiksi,
       peringatan,
       interaksi_obat,
@@ -55,6 +45,7 @@ class Obat_model
       :stok,
       :unit,
       :efekSamping,
+      :indikasi,
       :kontradiksi,
       :peringatan,
       :interaksiObat,
@@ -68,6 +59,7 @@ class Obat_model
     $this->db->bind('unit', htmlspecialchars($data['unit']));
     $this->db->bind('deskripsi', htmlspecialchars($data['deskripsi']));
     $this->db->bind('efekSamping', htmlspecialchars($data['efek-samping']));
+    $this->db->bind('indikasi', htmlspecialchars($data['indikasi']));
     $this->db->bind('kontradiksi', htmlspecialchars($data['kontradiksi']));
     $this->db->bind('peringatan', htmlspecialchars($data['peringatan']));
     $this->db->bind('interaksiObat', htmlspecialchars($data['interaksi-obat']));
