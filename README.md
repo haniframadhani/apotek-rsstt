@@ -12,6 +12,10 @@ clone with git
 
 ```git clone https://github.com/haniframadhani/apotek-rsstt.git```
 
+Go to the project directory
+
+```cd apotek-rsstt```
+
 create `.env` or `.env.local` file
 
 ## Environment Variables
