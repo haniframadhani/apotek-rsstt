@@ -6,6 +6,14 @@ website sistem informasi apotek Rumah Sakit Sudah Takdir Tuhan
 
 - php 8
 
+## Instalation
+
+clone with git
+
+```git clone https://github.com/haniframadhani/apotek-rsstt.git```
+
+create `.env` or `.env.local` file
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your `.env` file
@@ -14,9 +22,9 @@ To run this project, you will need to add the following environment variables to
 
 `DBPASSWORD` your database password. in windows the default password is empty. in linux & macos is `root`
 
-`DBHOSt` your database host url. in local is `localhost`
+`DBHOST` your database host url. in local is `localhost`
 
-`DBNAME` name of database you want to use E.g `thisdb`
+`DBNAME` name of database you want to use E.g `database_name`
 
 ## Contributors
 
