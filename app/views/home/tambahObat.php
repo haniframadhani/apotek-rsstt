@@ -22,7 +22,7 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="deskripsi">deskripsi</label>
-          <textarea maxlength="16777215" name="deskripsi" id="deskripsi" class="form-control" placeholder="deskripsi"
+          <textarea maxlength="65535" name="deskripsi" id="deskripsi" class="form-control" placeholder="deskripsi"
             required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -38,14 +38,14 @@
               <option value="tablet">tablet</option>
               <option value="kapsul">kapsul</option>
             </select>
-          </div>
-          <div class="invalid-feedback">
-            Wajib diisi
+            <div class="invalid-feedback">
+              Wajib diisi
+            </div>
           </div>
         </div>
         <div class="mt-2">
           <label class="form-label" for="efek-samping">efek samping</label>
-          <textarea maxlength="16777215" name="efek-samping" id="efek-samping" class="form-control"
+          <textarea maxlength="65535" name="efek-samping" id="efek-samping" class="form-control"
             placeholder="efek samping" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -53,7 +53,7 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="indikasi">indikasi</label>
-          <textarea maxlength="16777215" type="text" name="indikasi" id="indikasi" class="form-control"
+          <textarea maxlength="65535" type="text" name="indikasi" id="indikasi" class="form-control"
             placeholder="indikasi" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -61,7 +61,7 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="kontradiksi">kontradiksi</label>
-          <textarea maxlength="16777215" type="text" name="kontradiksi" id="kontradiksi" class="form-control"
+          <textarea maxlength="65535" type="text" name="kontradiksi" id="kontradiksi" class="form-control"
             placeholder="kontradiksi" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -69,7 +69,7 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="peringatan">peringatan</label>
-          <textarea maxlength="16777215" type="text" name="peringatan" id="peringatan" class="form-control"
+          <textarea maxlength="65535" type="text" name="peringatan" id="peringatan" class="form-control"
             placeholder="peringatan" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -77,7 +77,7 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="interaksi-obat">interaksi obat</label>
-          <textarea maxlength="16777215" type="text" name="interaksi-obat" id="interaksi-obat" class="form-control"
+          <textarea maxlength="65535" type="text" name="interaksi-obat" id="interaksi-obat" class="form-control"
             placeholder="interaksi obat" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -113,7 +113,6 @@
   'use strict'
 
   const forms = document.querySelectorAll('.needs-validation');
-  let select = forms[0][4];
 
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
@@ -121,7 +120,6 @@
         event.preventDefault()
         event.stopPropagation()
       }
-      console.log(form)
       form.classList.add('was-validated')
     }, false)
   })
