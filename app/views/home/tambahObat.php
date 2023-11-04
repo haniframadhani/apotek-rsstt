@@ -6,7 +6,7 @@
       <form class="mt-2  needs-validation" action="<?= BASEURL ?>/home/tambah" method="post" novalidate>
         <div>
           <label class="form-label" for="nama-generik">nama generik</label>
-          <input maxlength="255" type="text" name="nama-generik" id="nama-generik" class="form-control"
+          <input minlength="1" maxlength="255" type="text" name="nama-generik" id="nama-generik" class="form-control"
             placeholder="nama generik" required>
           <div class="invalid-feedback">
             Wajib diisi
@@ -14,7 +14,7 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="nama-merek">nama merek</label>
-          <input maxlength="255" type="text" name="nama-merek" id="nama-merek" class="form-control"
+          <input minlength="1" maxlength="255" type="text" name="nama-merek" id="nama-merek" class="form-control"
             placeholder="nama merek" required>
           <div class="invalid-feedback">
             Wajib diisi
@@ -22,7 +22,8 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="deskripsi">deskripsi</label>
-          <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="deskripsi" required></textarea>
+          <textarea maxlength="16777215" name="deskripsi" id="deskripsi" class="form-control" placeholder="deskripsi"
+            required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
           </div>
@@ -30,7 +31,7 @@
         <div class="mt-2">
           <label class="form-label" for="dosis">stok</label>
           <div class="input-group">
-            <input maxlength="20" type="number" name="stok" id="stok" class="form-control" min="1" placeholder="stok"
+            <input type="number" name="stok" id="stok" class="form-control" min="0" max="2147483647" placeholder="stok"
               required>
             <select class="form-select input-group" name="unit" id="unit">
               <option value="botol" selected>botol</option>
@@ -44,39 +45,39 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="efek-samping">efek samping</label>
-          <textarea name="efek-samping" id="efek-samping" class="form-control" placeholder="efek samping"
-            required></textarea>
+          <textarea maxlength="16777215" name="efek-samping" id="efek-samping" class="form-control"
+            placeholder="efek samping" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
           </div>
         </div>
         <div class="mt-2">
           <label class="form-label" for="indikasi">indikasi</label>
-          <textarea type="text" name="indikasi" id="indikasi" class="form-control" placeholder="indikasi"
-            required></textarea>
+          <textarea maxlength="16777215" type="text" name="indikasi" id="indikasi" class="form-control"
+            placeholder="indikasi" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
           </div>
         </div>
         <div class="mt-2">
           <label class="form-label" for="kontradiksi">kontradiksi</label>
-          <textarea type="text" name="kontradiksi" id="kontradiksi" class="form-control" placeholder="kontradiksi"
-            required></textarea>
+          <textarea maxlength="16777215" type="text" name="kontradiksi" id="kontradiksi" class="form-control"
+            placeholder="kontradiksi" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
           </div>
         </div>
         <div class="mt-2">
           <label class="form-label" for="peringatan">peringatan</label>
-          <textarea type="text" name="peringatan" id="peringatan" class="form-control" placeholder="peringatan"
-            required></textarea>
+          <textarea maxlength="16777215" type="text" name="peringatan" id="peringatan" class="form-control"
+            placeholder="peringatan" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
           </div>
         </div>
         <div class="mt-2">
           <label class="form-label" for="interaksi-obat">interaksi obat</label>
-          <textarea type="text" name="interaksi-obat" id="interaksi-obat" class="form-control"
+          <textarea maxlength="16777215" type="text" name="interaksi-obat" id="interaksi-obat" class="form-control"
             placeholder="interaksi obat" required></textarea>
           <div class="invalid-feedback">
             Wajib diisi
@@ -84,8 +85,8 @@
         </div>
         <div class="mt-2">
           <label class="form-label" for="produsen">produsen</label>
-          <input maxlength="255" type="text" name="produsen" id="produsen" class="form-control" placeholder="produsen"
-            required>
+          <input minlength="1" maxlength="255" type="text" name="produsen" id="produsen" class="form-control"
+            placeholder="produsen" required>
           <div class="invalid-feedback">
             Wajib diisi
           </div>
@@ -94,7 +95,8 @@
           <label class="form-label" for="harga">harga</label>
           <div class="input-group has-validation">
             <span class="input-group-text">Rp.</span>
-            <input type="number " name="harga" id="harga" min="1" class="form-control" placeholder="10000" required>
+            <input type="number" name="harga" id="harga" min="0" max="2147483647" class="form-control"
+              placeholder="10000" required>
           </div>
           <div class="invalid-feedback">
             Wajib diisi
@@ -112,7 +114,6 @@
 
   const forms = document.querySelectorAll('.needs-validation');
   let select = forms[0][4];
-  // console.log(select)
 
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
