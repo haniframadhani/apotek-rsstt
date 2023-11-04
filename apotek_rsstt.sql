@@ -80,12 +80,13 @@ CREATE TABLE `daftar_ambil_obat` (
 
 CREATE TABLE `obat` (
   `kode` int NOT NULL,
-  `nama_generik` varchar(255) DEFAULT NULL,
-  `nama_merek` varchar(255) DEFAULT NULL,
+  `nama_generik` varchar(255) NOT NULL,
+  `nama_merek` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
   `stok` int NOT NULL,
   `unit` varchar(20) NOT NULL,
   `efek_samping` text NOT NULL,
+  `indikasi` text NOT NULL,
   `kontradiksi` text NOT NULL,
   `peringatan` text NOT NULL,
   `interaksi_obat` text NOT NULL,

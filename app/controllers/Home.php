@@ -19,11 +19,11 @@ class Home extends Controller
   public function tambah()
   {
     if ($this->model('Obat_model')->tambahDataObat($_POST) > 0) {
-      Flasher::setFlash('test flash', 'berhasil');
+      Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'obat');
       header('Location: ' . BASEURL . '/home');
       exit;
     } else {
-      Flasher::setFlash('test flash', 'gagal');
+      Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'obat');
       header('Location: ' . BASEURL . '/home');
       exit;
     }
