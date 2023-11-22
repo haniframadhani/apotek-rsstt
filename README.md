@@ -40,4 +40,11 @@ To run this project, you will need to add the following environment variables to
 
 ## Contributors
 
-[![](https://contrib.rocks/image?repo=haniframadhani/apotek-rsstt)](https://github.com/remarkablemark/html-react-parser/graphs/contributors)
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
