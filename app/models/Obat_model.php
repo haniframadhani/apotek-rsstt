@@ -68,4 +68,15 @@ class Obat_model
     $this->db->execute();
     return $this->db->rowCount();
   }
+
+  public function hapusDataObat($kode)
+  {
+    $query = "DELETE FROM obat WHERE kode=:kode";
+    $this->db->query($query);
+    $this->db->bind('kode', $kode);
+
+    $this->db->execute();
+
+    return $this->db->rowCount();
+  }
 }

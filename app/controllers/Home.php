@@ -28,4 +28,16 @@ class Home extends Controller
       exit;
     }
   }
+  public function hapus($id)
+  {
+    if ($this->model('Obat_model')->hapusDataObat($id) > 0) {
+      Flasher::setFlash('berhasil', 'dihapus', 'success', 'obat');
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    } else {
+      Flasher::setFlash('gagal', 'dihapus', 'danger', 'obat');
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+  }
 }
