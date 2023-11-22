@@ -46,6 +46,7 @@ To run this project, you will need to add the following environment variables to
 <table>
   <tbody>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://haniframadhani.github.io/"><img src="https://avatars.githubusercontent.com/u/69223521?v=4?s=100" width="100px;" alt="muhammad hanif ramadhani"/><br /><sub><b>muhammad hanif ramadhani</b></sub></a><br /><a href="https://github.com/haniframadhani/apotek-rsstt/commits?author=haniframadhani" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mrifainestli7"><img src="https://avatars.githubusercontent.com/u/101726009?v=4?s=100" width="100px;" alt="mrifainestli7"/><br /><sub><b>mrifainestli7</b></sub></a><br /><a href="https://github.com/haniframadhani/apotek-rsstt/commits?author=mrifainestli7" title="Code">💻</a></td>
     </tr>
   </tbody>
