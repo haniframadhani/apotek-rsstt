@@ -43,6 +43,13 @@ To run this project, you will need to add the following environment variables to
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://haniframadhani.github.io/"><img src="https://avatars.githubusercontent.com/u/69223521?v=4?s=100" width="100px;" alt="muhammad hanif ramadhani"/><br /><sub><b>muhammad hanif ramadhani</b></sub></a><br /><a href="https://github.com/haniframadhani/apotek-rsstt/commits?author=haniframadhani" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
