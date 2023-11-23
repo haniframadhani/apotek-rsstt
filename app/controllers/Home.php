@@ -24,6 +24,14 @@ class Home extends Controller
     $this->view('home/detail', $data);
     $this->view('templates/footer');
   }
+  public function update($kode)
+  {
+    $data['obat'] = $this->model('Obat_model')->getObatByKode($kode);
+    $data['title'] = 'update ' . $data['obat']['nama_generik'] . ' / ' . $data['obat']['nama_merek'];
+    $this->view('templates/header', $data);
+    $this->view('home/update', $data);
+    $this->view('templates/footer');
+  }
   public function tambah()
   {
     if ($this->model('Obat_model')->tambahDataObat($_POST) > 0) {
@@ -44,6 +52,18 @@ class Home extends Controller
       exit;
     } else {
       Flasher::setFlash('gagal', 'dihapus', 'danger', 'obat');
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+  }
+  public function ubah()
+  {
+    if ($this->model('Obat_model')->ubahDataObat($_POST) > 0) {
+      Flasher::setFlash('berhasil', 'diubah', 'success', 'obat');
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    } else {
+      Flasher::setFlash('gagal', 'diubah', 'danger', 'obat');
       header('Location: ' . BASEURL . '/home');
       exit;
     }
