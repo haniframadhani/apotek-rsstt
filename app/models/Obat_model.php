@@ -25,7 +25,7 @@ class Obat_model
 
   public function tambahDataObat($data)
   {
-    $query = "INSERT INTO obat (
+    $query = "INSERT INTO $this->table (
       nama_generik,
       nama_merek,
       deskripsi,
@@ -74,9 +74,41 @@ class Obat_model
     $query = 'DELETE FROM ' . $this->table . ' WHERE kode=:kode';
     $this->db->query($query);
     $this->db->bind('kode', $kode);
-
     $this->db->execute();
+    return $this->db->rowCount();
+  }
 
+  public function ubahDataObat($data)
+  {
+    $query = "UPDATE $this->table SET
+      nama_generik=:namaGenerik,
+      nama_merek=:namaMerek,
+      deskripsi=:deskripsi,
+      stok=:stok,
+      unit=:unit,
+      efek_samping=:efekSamping,
+      indikasi=:indikasi,
+      kontradiksi=:kontradiksi,
+      peringatan=:peringatan,
+      interaksi_obat=:interaksiObat,
+      produsen=:produsen,
+      harga=:harga
+      WHERE kode=:kode";
+    $this->db->query($query);
+    $this->db->bind('namaGenerik', htmlspecialchars($data['nama-generik']));
+    $this->db->bind('namaMerek', htmlspecialchars($data['nama-merek']));
+    $this->db->bind('stok', (int)htmlspecialchars($data['stok']));
+    $this->db->bind('unit', htmlspecialchars($data['unit']));
+    $this->db->bind('deskripsi', htmlspecialchars($data['deskripsi']));
+    $this->db->bind('efekSamping', htmlspecialchars($data['efek-samping']));
+    $this->db->bind('indikasi', htmlspecialchars($data['indikasi']));
+    $this->db->bind('kontradiksi', htmlspecialchars($data['kontradiksi']));
+    $this->db->bind('peringatan', htmlspecialchars($data['peringatan']));
+    $this->db->bind('interaksiObat', htmlspecialchars($data['interaksi-obat']));
+    $this->db->bind('produsen', htmlspecialchars($data['produsen']));
+    $this->db->bind('harga', (int)htmlspecialchars($data['harga']));
+    $this->db->bind('kode', htmlspecialchars($data['kode']));
+    $this->db->execute();
     return $this->db->rowCount();
   }
 }

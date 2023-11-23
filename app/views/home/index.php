@@ -19,7 +19,8 @@
               <th>stok</th>
               <th>produsen</th>
               <th>harga</th>
-              <th>aksi</th>
+              <th>update</th>
+              <th>hapus</th>
             </tr>
           </thead>
           <tbody class="">
@@ -31,7 +32,12 @@
               <td><?= $obat['stok'] . ' ' . $obat['unit'] ?></td>
               <td><?= $obat['produsen'] ?></td>
               <td>Rp.<?= $obat['harga'] ?></td>
-              <td><a href="<?= BASEURL ?>/home/hapus/<?= $obat['kode']; ?>" class="btn btn-danger btn-sm"
+              <td>
+                <a href="<?= BASEURL ?>/home/update/<?= $obat['kode']; ?>" class="btn btn-secondary btn-sm"><i
+                    class="bi bi-pencil"></i> edit</a>
+              </td>
+              <td>
+                <a href="<?= BASEURL ?>/home/hapus/<?= $obat['kode']; ?>" class="btn btn-danger btn-sm"
                   onclick="return confirm('yakin?')"><i class="bi bi-trash"></i> hapus</a>
               </td>
             </tr>
