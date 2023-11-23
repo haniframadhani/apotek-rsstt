@@ -18,7 +18,7 @@ class Obat_model
 
   public function getObatByKode($kode)
   {
-    $this->db->query('SELECT * FROM ' . $this->table . 'WHERE kode=:kode');
+    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE kode=:kode');
     $this->db->bind('kode', $kode);
     return $this->db->single();
   }
@@ -71,7 +71,7 @@ class Obat_model
 
   public function hapusDataObat($kode)
   {
-    $query = "DELETE FROM obat WHERE kode=:kode";
+    $query = 'DELETE FROM ' . $this->table . ' WHERE kode=:kode';
     $this->db->query($query);
     $this->db->bind('kode', $kode);
 
