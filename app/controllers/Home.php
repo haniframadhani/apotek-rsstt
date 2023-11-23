@@ -4,9 +4,9 @@ class Home extends Controller
   public function index()
   {
     $data['title'] = 'home';
-    $baru['obat'] = $this->model('Obat_model')->getAllObat();
+    $data['obat'] = $this->model('Obat_model')->getAllObat();
     $this->view('templates/header', $data);
-    $this->view('home/index', $baru);
+    $this->view('home/index', $data);
     $this->view('templates/footer');
   }
   public function tambahObat()
@@ -14,6 +14,14 @@ class Home extends Controller
     $data['title'] = 'tambah obat';
     $this->view('templates/header', $data);
     $this->view('home/tambahObat');
+    $this->view('templates/footer');
+  }
+  public function detail($kode)
+  {
+    $data['obat'] = $this->model('Obat_model')->getObatByKode($kode);
+    $data['title'] = $data['obat']['nama_generik'] . ' / ' . $data['obat']['nama_merek'];
+    $this->view('templates/header', $data);
+    $this->view('home/detail', $data);
     $this->view('templates/footer');
   }
   public function tambah()
