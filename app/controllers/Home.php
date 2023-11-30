@@ -20,6 +20,7 @@ class Home extends Controller
   {
     $data['title'] = 'tambah obat';
     $data['obat'] = $this->validator->getData();
+    $data['errors'] = $this->validator->getError();
     $data['format']=$this->validator->getFormatDefault();
     $this->view('templates/header', $data);
     $this->view('home/tambahObat', $data);

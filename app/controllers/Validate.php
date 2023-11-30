@@ -23,14 +23,16 @@ class Validate
         'harga'
         ];
         $this->data = array_fill_keys($this->index, '');
+        $this->error = array_fill_keys($this->index, '');
     }
-
     public function setData($data){
         $this->data = $data;
-
     }    
     public function getData(){
         return $this->data;
+    }
+    public function getError(){
+        return $this->error;
     }
     private function validateNumber($data){
         $error = '';
@@ -113,9 +115,6 @@ class Validate
             }
         }
         return true;
-    }
-    public function getError(){
-        return $this->error;
     }
     public function format($data){
         if (empty($data)) {
