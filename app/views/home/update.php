@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <label class="form-label" for="dosis">stok</label>
+                    <label class="form-label" for="stok">stok</label>
                     <div class="input-group">
                         <input type="number" name="stok" id="stok" class="<?= $data['format']['stok'] ?>" min="0"
                             max="2147483647" placeholder="stok" value="<?= $data['obat']['stok'] ?>" required>
