@@ -6,24 +6,24 @@
             <form class="mt-2" action="<?= BASEURL ?>/home/ubah" method="post" novalidate>
                 <input type="hidden" name="kode" id="kode" value="<?= $data['obat']['kode'] ?>">
                 <div>
-                    <label class="form-label" for="nama-generik">nama generik</label>
+                    <label class="form-label" for="nama_generik">nama generik</label>
                     <input minlength="1" maxlength="255" type="text" name="nama_generik" id="nama_generik"
                         class="<?=$data['format']['nama_generik']?>" placeholder="nama generik"
                         value="<?= $data['obat']['nama_generik'] ?>" required>
                     <?php if(!empty($data['errors']['nama_generik'])) { ?>
-                    <div class="invalid-feedback dblock">
+                    <div class="invalid-feedback d-block">
                         <?php echo $data['errors']['nama_generik']; ?>
                     </div>
                     <?php } ?>
 
                 </div>
                 <div class="mt-2">
-                    <label class="form-label" for="nama-merek">nama merek</label>
+                    <label class="form-label" for="nama_merek">nama merek</label>
                     <input minlength="1" maxlength="255" type="text" name="nama_merek" id="nama_merek"
                         class="<?=$data['format']['nama_merek']?>" placeholder="nama merek"
                         value="<?= $data['obat']['nama_merek'] ?>" required>
                     <?php if(!empty($data['errors']['nama_merek'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['nama_merek']; ?>
                     </div>
                     <?php } ?>
@@ -34,7 +34,7 @@
                         class="<?=$data['format']['deskripsi']?>" placeholder="deskripsi"
                         required><?= $data['obat']['deskripsi'] ?></textarea>
                     <?php if(!empty($data['errors']['deskripsi'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['deskripsi']; ?>
                     </div>
                     <?php } ?>
@@ -75,24 +75,24 @@
               ?>
                         </select>
                         <?php if(!empty($data['errors']['stok'])) { ?>
-                        <div class="invalid-feedback ">
+                        <div class="invalid-feedback d-block ">
                             <?php echo $data['errors']['stok']; ?>
                         </div>
                         <?php } ?>
                         <?php if(!empty($data['errors']['unit'])) { ?>
-                        <div class="invalid-feedback ">
+                        <div class="invalid-feedback d-block ">
                             <?php echo $data['errors']['unit']; ?>
                         </div>
                         <?php } ?>
                     </div>
                 </div>
                 <div class="mt-2">
-                    <label class="form-label" for="efek-samping">efek samping</label>
+                    <label class="form-label" for="efek_samping">efek samping</label>
                     <textarea maxlength="65535" name="efek_samping" id="efek_samping"
                         class="<?= $data['format']['efek_samping'] ?>" placeholder="efek samping"
                         required><?= $data['obat']['efek_samping'] ?></textarea>
                     <?php if(!empty($data['errors']['efek_samping'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['efek_samping']; ?>
                     </div>
                     <?php } ?>
@@ -103,7 +103,7 @@
                         class="<?= $data['format']['indikasi'] ?>" placeholder="indikasi"
                         required><?= $data['obat']['indikasi'] ?></textarea>
                     <?php if(!empty($data['errors']['indikasi'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['indikasi']; ?>
                     </div>
                     <?php } ?>
@@ -114,7 +114,7 @@
                         class="<?= $data['format']['kontradiksi'] ?>" placeholder="kontradiksi"
                         required><?= $data['obat']['kontradiksi'] ?></textarea>
                     <?php if(!empty($data['errors']['kontradiksi'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['kontradiksi']; ?>
                     </div>
                     <?php } ?>
@@ -125,18 +125,18 @@
                         class="<?= $data['format']['peringatan'] ?>" placeholder="peringatan"
                         required><?= $data['obat']['peringatan'] ?></textarea>
                     <?php if(!empty($data['errors']['peringatan'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['peringatan']; ?>
                     </div>
                     <?php } ?>
                 </div>
                 <div class="mt-2">
-                    <label class="form-label" for="interaksi-obat">interaksi obat</label>
+                    <label class="form-label" for="interaksi_obat">interaksi obat</label>
                     <textarea maxlength="65535" type="text" name="interaksi_obat" id="interaksi_obat"
                         class="<?= $data['format']['interaksi_obat'] ?>" placeholder="interaksi obat"
                         required><?= $data['obat']['interaksi_obat'] ?></textarea>
                     <?php if(!empty($data['errors']['interaksi_obat'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['interaksi_obat']; ?>
                     </div>
                     <?php } ?>
@@ -147,7 +147,7 @@
                         class="<?= $data['format']['produsen'] ?>" placeholder="produsen"
                         value="<?= $data['obat']['produsen'] ?>" required>
                     <?php if(!empty($data['errors']['produsen'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block ">
                         <?php echo $data['errors']['produsen']; ?>
                     </div>
                     <?php } ?>
@@ -161,7 +161,7 @@
                             value="<?= $data['obat']['harga'] ?>" required>
                     </div>
                     <?php if(!empty($data['errors']['harga'])) { ?>
-                    <div class="invalid-feedback ">
+                    <div class="invalid-feedback d-block">
                         <?php echo $data['errors']['harga']; ?>
                     </div>
                     <?php } ?>
