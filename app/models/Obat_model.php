@@ -4,7 +4,7 @@ class Obat_model
 {
   private $table = 'obat';
   private $db;
-
+  
   public function __construct()
   {
     $this->db = new Database;
@@ -53,16 +53,16 @@ class Obat_model
       :harga
     )";
     $this->db->query($query);
-    $this->db->bind('namaGenerik', htmlspecialchars($data['nama-generik']));
-    $this->db->bind('namaMerek', htmlspecialchars($data['nama-merek']));
+    $this->db->bind('namaGenerik', htmlspecialchars($data['nama_generik']));
+    $this->db->bind('namaMerek', htmlspecialchars($data['nama_merek']));
     $this->db->bind('stok', (int)htmlspecialchars($data['stok']));
     $this->db->bind('unit', htmlspecialchars($data['unit']));
     $this->db->bind('deskripsi', htmlspecialchars($data['deskripsi']));
-    $this->db->bind('efekSamping', htmlspecialchars($data['efek-samping']));
+    $this->db->bind('efekSamping', htmlspecialchars($data['efek_samping']));
     $this->db->bind('indikasi', htmlspecialchars($data['indikasi']));
     $this->db->bind('kontradiksi', htmlspecialchars($data['kontradiksi']));
     $this->db->bind('peringatan', htmlspecialchars($data['peringatan']));
-    $this->db->bind('interaksiObat', htmlspecialchars($data['interaksi-obat']));
+    $this->db->bind('interaksiObat', htmlspecialchars($data['interaksi_obat']));
     $this->db->bind('produsen', htmlspecialchars($data['produsen']));
     $this->db->bind('harga', (int)htmlspecialchars($data['harga']));
     $this->db->execute();
@@ -95,16 +95,16 @@ class Obat_model
       harga=:harga
       WHERE kode=:kode";
     $this->db->query($query);
-    $this->db->bind('namaGenerik', htmlspecialchars($data['nama-generik']));
-    $this->db->bind('namaMerek', htmlspecialchars($data['nama-merek']));
+    $this->db->bind('namaGenerik', htmlspecialchars($data['nama_generik']));
+    $this->db->bind('namaMerek', htmlspecialchars($data['nama_merek']));
     $this->db->bind('stok', (int)htmlspecialchars($data['stok']));
     $this->db->bind('unit', htmlspecialchars($data['unit']));
     $this->db->bind('deskripsi', htmlspecialchars($data['deskripsi']));
-    $this->db->bind('efekSamping', htmlspecialchars($data['efek-samping']));
+    $this->db->bind('efekSamping', htmlspecialchars($data['efek_samping']));
     $this->db->bind('indikasi', htmlspecialchars($data['indikasi']));
     $this->db->bind('kontradiksi', htmlspecialchars($data['kontradiksi']));
     $this->db->bind('peringatan', htmlspecialchars($data['peringatan']));
-    $this->db->bind('interaksiObat', htmlspecialchars($data['interaksi-obat']));
+    $this->db->bind('interaksiObat', htmlspecialchars($data['interaksi_obat']));
     $this->db->bind('produsen', htmlspecialchars($data['produsen']));
     $this->db->bind('harga', (int)htmlspecialchars($data['harga']));
     $this->db->bind('kode', htmlspecialchars($data['kode']));
