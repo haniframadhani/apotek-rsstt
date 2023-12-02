@@ -1,13 +1,6 @@
 <?php 
-require_once 'Validate.php';
 class Home extends Controller
 {
-  private $validator;
-
-  public function __construct()
-  {
-      $this->validator = new Validate();
-  }
   public function index()
   {
     $data['title'] = 'home';
@@ -19,9 +12,9 @@ class Home extends Controller
   public function tambahObat()
   {
     $data['title'] = 'tambah obat';
-    $data['obat'] = $this->validator->getData();
-    $data['errors'] = $this->validator->getError();
-    $data['format']=$this->validator->getFormatDefault();
+    $data['obat'] = $this->getData();
+    $data['errors'] = $this->getError();
+    $data['format']=$this->getFormatDefault();
     $this->view('templates/header', $data);
     $this->view('home/tambahObat', $data);
     $this->view('templates/footer');
@@ -38,9 +31,9 @@ class Home extends Controller
   {
     $data['obat'] = $this->model('Obat_model')->getObatByKode($kode);
     $data['title'] = 'update ' . $data['obat']['nama_generik'] . ' / ' . $data['obat']['nama_merek'];
-    $this->validator->setData($data);
-    $data['errors'] = $this->validator->getError();
-    $data['format']=$this->validator->getFormatDefault();
+    $this->setData($data);
+    $data['errors'] = $this->getError();
+    $data['format']=$this->getFormatDefault();
     $this->view('templates/header', $data);
     $this->view('home/update', $data);
     $this->view('templates/footer');
@@ -49,8 +42,8 @@ class Home extends Controller
   {
     $data['title'] = 'tambah obat';
     $data['obat'] = $_POST;
-    $this->validator->setData($data['obat']);
-    if($this->validator->validasi()){
+    $this->setData($data['obat']);
+    if($this->validasi()){
       if ($this->model('Obat_model')->tambahDataObat($data['obat']) > 0) {
         Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'obat');
         header('Location: ' . BASEURL . '/home');
@@ -61,9 +54,9 @@ class Home extends Controller
         exit;
       }
     } else {
-      $data['errors'] = $this->validator->getError();
+      $data['errors'] = $this->getError();
     }
-    $data['format'] = $this->validator->getFormat();
+    $data['format'] = $this->getFormat();
     $this->view('templates/header', $data);
     $this->view('home/tambahObat', $data);
     $this->view('templates/footer');
@@ -85,8 +78,8 @@ class Home extends Controller
     $data['obat'] = $_POST;
     $tempDatabase = $this->model('Obat_model')->getObatByKode($data['obat']['kode']);
     $data['title'] = 'update ' . $tempDatabase['nama_generik'] . ' / ' . $tempDatabase['nama_merek'];
-    $this->validator->setData($data['obat']);
-    if($this->validator->validasi()){
+    $this->setData($data['obat']);
+    if($this->validasi()){
       if ($this->model('Obat_model')->ubahDataObat($data['obat']) > 0) {
         Flasher::setFlash('berhasil', 'diubah', 'success', 'obat');
         header('Location: ' . BASEURL . '/home');
@@ -97,9 +90,9 @@ class Home extends Controller
         exit;
       }
     } else {
-      $data['errors'] = $this->validator->getError();
+      $data['errors'] = $this->getError();
     }
-    $data['format'] = $this->validator->getFormat();
+    $data['format'] = $this->getFormat();
     $this->view('templates/header', $data);
     $this->view('home/update', $data);
     $this->view('templates/footer');
