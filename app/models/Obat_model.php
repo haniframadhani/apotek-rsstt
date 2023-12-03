@@ -4,7 +4,7 @@ class Obat_model
 {
   private $table = 'obat';
   private $db;
-  
+
   public function __construct()
   {
     $this->db = new Database;
@@ -12,7 +12,7 @@ class Obat_model
 
   public function getAllObat()
   {
-    $this->db->query('SELECT * FROM ' . $this->table);
+    $this->db->query('SELECT kode, nama_generik, nama_merek, stok, unit, produsen, harga FROM ' . $this->table);
     return $this->db->resultSet();
   }
 

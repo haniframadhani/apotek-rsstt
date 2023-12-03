@@ -7,6 +7,14 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="text-capitalize">daftar obat</h1>
+      <form action="<?= BASEURL ?>/home/cari" method="post">
+        <div class="input-group my-3">
+          <input type="text" class="form-control" placeholder="cari obat" name="keyword" id="keyword"
+            autocomplete="off">
+          <button class="btn btn-outline-primary" type="button" id="tombolCari"><i class="bi bi-search"></i>
+            Cari</button>
+        </div>
+      </form>
       <a href="<?= BASEURL ?>/home/tambahObat" class="btn btn-primary"><i class="bi bi-plus"></i> tambah obat</a>
       <?php if (!empty($data['obat'])) : ?>
       <div class="table-responsive mt-2">
