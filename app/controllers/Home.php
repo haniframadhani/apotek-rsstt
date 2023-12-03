@@ -101,5 +101,14 @@ class Home extends Controller
     $this->view('home/update', $data);
     $this->view('templates/footer');
   }
-
+  public function cari(){
+    $data['title'] = 'home';
+    if(isset($_POST)){
+      $key = $_POST;
+      $data['obat'] = $this->model('Obat_model')->getObatByKey($key['keyword']);
+    }
+    $this->view('templates/header', $data);
+    $this->view('home/index', $data);
+    $this->view('templates/footer');
+  }
 }
