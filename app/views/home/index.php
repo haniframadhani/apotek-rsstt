@@ -10,7 +10,7 @@
       <form action="<?= BASEURL ?>/home/cari" method="post">
         <div class="input-group my-3">
           <input type="text" class="form-control" placeholder="cari obat" name="keyword" id="keyword"
-            autocomplete="off">
+            value="<?= $data['keyword'] ?>" autocomplete=" off">
           <button class="btn btn-outline-primary" type="submit" id="tombolCari"><i class="bi bi-search"></i>
             Cari</button>
         </div>
