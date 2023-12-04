@@ -25,9 +25,9 @@ class Obat_model
 
   public function getObatByKey($key)
   {
+    $keyString = "%$key%";
     $this->db->query('SELECT kode, nama_generik, nama_merek, stok, unit, produsen, harga FROM ' . $this->table . ' 
     WHERE kode=:keyId OR nama_generik LIKE :keyString OR nama_merek LIKE :keyString');
-    $keyString = "%$key%";
     $this->db->bind('keyString', $keyString);
     $this->db->bind('keyId', $key);
     return $this->db->resultSet();
