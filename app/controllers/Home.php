@@ -5,6 +5,7 @@ class Home extends Controller
   {
     $data['title'] = 'home';
     $data['obat'] = $this->model('Obat_model')->getAllObat();
+    $data['keyword'] ='';
     $this->view('templates/header', $data);
     $this->view('home/index', $data);
     $this->view('templates/footer');
@@ -101,5 +102,16 @@ class Home extends Controller
     $this->view('home/update', $data);
     $this->view('templates/footer');
   }
-
+  public function cari(){
+    $data['title'] = 'home';
+    $data['keyword'] = '';
+    $data = $_POST;
+    if(!empty($data['keyword'])){
+      $data['obat'] = $this->model('Obat_model')->getObatByKey($data['keyword']);
+    }
+    $this->view('templates/header', $data);
+    $this->view('home/index', $data);
+    $this->view('templates/footer');
+  }
+  
 }

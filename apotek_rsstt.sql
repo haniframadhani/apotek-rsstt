@@ -1,87 +1,78 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Nov 02, 2023 at 01:59 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Database: `apotek_rsstt`
---
 
--- --------------------------------------------------------
+-- Dumping database structure for apotek_rsstt
+CREATE DATABASE IF NOT EXISTS `apotek_rsstt` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `apotek_rsstt`;
 
---
--- Table structure for table `activity_log`
---
-
-CREATE TABLE `activity_log` (
+-- Dumping structure for table apotek_rsstt.activity_log
+CREATE TABLE IF NOT EXISTS `activity_log` (
   `time` int NOT NULL,
-  `kode_apoteker` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `kode_apoteker` int NOT NULL,
+  PRIMARY KEY (`time`),
+  KEY `kode_apoteker` (`kode_apoteker`),
+  CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Table structure for table `akun`
---
-
-CREATE TABLE `akun` (
+-- Dumping structure for table apotek_rsstt.akun
+CREATE TABLE IF NOT EXISTS `akun` (
   `kode_apoteker` int NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `level` varchar(50) NOT NULL,
-  `akses` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `akses` varchar(50) NOT NULL,
+  UNIQUE KEY `kode_apotek` (`kode_apoteker`),
+  CONSTRAINT `akun_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Table structure for table `apoteker`
---
-
-CREATE TABLE `apoteker` (
-  `kode` int NOT NULL,
+-- Dumping structure for table apotek_rsstt.apoteker
+CREATE TABLE IF NOT EXISTS `apoteker` (
+  `kode` int NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `jenis_kelamin` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `jenis_kelamin` varchar(50) NOT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Table structure for table `daftar_ambil_obat`
---
-
-CREATE TABLE `daftar_ambil_obat` (
+-- Dumping structure for table apotek_rsstt.daftar_ambil_obat
+CREATE TABLE IF NOT EXISTS `daftar_ambil_obat` (
   `time` int NOT NULL,
   `kode_obat` int NOT NULL,
-  `jumlah` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `jumlah` int NOT NULL,
+  KEY `time` (`time`),
+  KEY `kode_obat` (`kode_obat`),
+  CONSTRAINT `daftar_ambil_obat_ibfk_1` FOREIGN KEY (`kode_obat`) REFERENCES `obat` (`kode`),
+  CONSTRAINT `daftar_ambil_obat_ibfk_2` FOREIGN KEY (`time`) REFERENCES `activity_log` (`time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Table structure for table `obat`
---
-
-CREATE TABLE `obat` (
-  `kode` int NOT NULL,
-  `nama_generik` varchar(255) NOT NULL,
-  `nama_merek` varchar(255) NOT NULL,
+-- Dumping structure for table apotek_rsstt.obat
+CREATE TABLE IF NOT EXISTS `obat` (
+  `kode` int NOT NULL AUTO_INCREMENT,
+  `nama_generik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nama_merek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `deskripsi` text NOT NULL,
   `stok` int NOT NULL,
   `unit` varchar(20) NOT NULL,
@@ -91,85 +82,16 @@ CREATE TABLE `obat` (
   `peringatan` text NOT NULL,
   `interaksi_obat` text NOT NULL,
   `produsen` varchar(255) NOT NULL,
-  `harga` int NOT NULL
-) ;
+  `harga` int NOT NULL,
+  PRIMARY KEY (`kode`),
+  KEY `idx_kode` (`kode`),
+  KEY `idx_nama` (`nama_generik`,`nama_merek`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Indexes for dumped tables
---
+-- Data exporting was unselected.
 
---
--- Indexes for table `activity_log`
---
-ALTER TABLE `activity_log`
-  ADD PRIMARY KEY (`time`),
-  ADD KEY `kode_apoteker` (`kode_apoteker`);
-
---
--- Indexes for table `akun`
---
-ALTER TABLE `akun`
-  ADD UNIQUE KEY `kode_apotek` (`kode_apoteker`);
-
---
--- Indexes for table `apoteker`
---
-ALTER TABLE `apoteker`
-  ADD PRIMARY KEY (`kode`);
-
---
--- Indexes for table `daftar_ambil_obat`
---
-ALTER TABLE `daftar_ambil_obat`
-  ADD KEY `time` (`time`),
-  ADD KEY `kode_obat` (`kode_obat`);
-
---
--- Indexes for table `obat`
---
-ALTER TABLE `obat`
-  ADD PRIMARY KEY (`kode`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `apoteker`
---
-ALTER TABLE `apoteker`
-  MODIFY `kode` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `obat`
---
-ALTER TABLE `obat`
-  MODIFY `kode` int NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `activity_log`
---
-ALTER TABLE `activity_log`
-  ADD CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`);
-
---
--- Constraints for table `akun`
---
-ALTER TABLE `akun`
-  ADD CONSTRAINT `akun_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`);
-
---
--- Constraints for table `daftar_ambil_obat`
---
-ALTER TABLE `daftar_ambil_obat`
-  ADD CONSTRAINT `daftar_ambil_obat_ibfk_1` FOREIGN KEY (`kode_obat`) REFERENCES `obat` (`kode`),
-  ADD CONSTRAINT `daftar_ambil_obat_ibfk_2` FOREIGN KEY (`time`) REFERENCES `activity_log` (`time`);
-COMMIT;
-
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

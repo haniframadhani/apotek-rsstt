@@ -4,7 +4,7 @@ class Obat_model
 {
   private $table = 'obat';
   private $db;
-  
+
   public function __construct()
   {
     $this->db = new Database;
@@ -12,7 +12,7 @@ class Obat_model
 
   public function getAllObat()
   {
-    $this->db->query('SELECT * FROM ' . $this->table);
+    $this->db->query('SELECT kode, nama_generik, nama_merek, stok, unit, produsen, harga FROM ' . $this->table);
     return $this->db->resultSet();
   }
 
@@ -21,6 +21,15 @@ class Obat_model
     $this->db->query('SELECT * FROM ' . $this->table . ' WHERE kode=:kode');
     $this->db->bind('kode', $kode);
     return $this->db->single();
+  }
+
+  public function getObatByKey($key)
+  {
+    $key = "%$key%";
+    $this->db->query('SELECT kode, nama_generik, nama_merek, stok, unit, produsen, harga FROM ' . $this->table . ' 
+    WHERE kode LIKE :key OR nama_generik LIKE :key OR nama_merek LIKE :key');
+    $this->db->bind('key', $key);
+    return $this->db->resultSet();
   }
 
   public function tambahDataObat($data)
