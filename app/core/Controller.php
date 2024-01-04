@@ -4,7 +4,13 @@ class Controller
 {
   public function view($view, $data = [])
   {
-    require_once '../app/views/' . $view . '.php';
+    if (!isset($_SESSION['kode_apoteker'])) {
+      require_once '../app/views/templates/header.php';
+      require_once '../app/views/login/index.php';
+      require_once '../app/views/templates/footer.php';
+    } else {
+      require_once '../app/views/' . $view . '.php';
+    }
   }
   public function model($model)
   {
@@ -16,5 +22,4 @@ class Controller
     require_once '../app/controllers/' . $validate . '.php';
     return new $validate;
   }
-
 }
