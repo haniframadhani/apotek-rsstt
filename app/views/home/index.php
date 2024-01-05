@@ -5,6 +5,13 @@
     </div>
   </div>
   <div class="row">
+    <div class="d-flex align-items-center justify-content-end gap-2 py-2">
+      <a href="">keranjang</a>
+      <p class="m-0"><?= $_SESSION['nama'] ?></p>
+      <a href="<?= BASEURL ?>/login/logout" class="btn btn-outline-danger btn-sm ">logout</a>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-lg-12">
       <h1 class="text-capitalize">daftar obat</h1>
       <form action="<?= BASEURL ?>/home/cari" method="post">
@@ -26,8 +33,12 @@
                 <th>stok</th>
                 <th>produsen</th>
                 <th>harga</th>
-                <th>update</th>
-                <th>hapus</th>
+                <?php if ($_SESSION['level'] == 'admin') : ?>
+                  <th>update</th>
+                  <th>hapus</th>
+                <?php else : ?>
+                  <th>aksi</th>
+                <?php endif ?>
               </tr>
             </thead>
             <tbody class="">
@@ -39,12 +50,18 @@
                   <td><?= $obat['stok'] . ' ' . $obat['unit'] ?></td>
                   <td><?= $obat['produsen'] ?></td>
                   <td>Rp.<?= $obat['harga'] ?></td>
-                  <td>
-                    <a href="<?= BASEURL ?>/home/update/<?= $obat['kode']; ?>" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> edit</a>
-                  </td>
-                  <td>
-                    <a href="<?= BASEURL ?>/home/hapus/<?= $obat['kode']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin?')"><i class="bi bi-trash"></i> hapus</a>
-                  </td>
+                  <?php if ($_SESSION['level'] == 'admin') : ?>
+                    <td>
+                      <a href="<?= BASEURL ?>/home/update/<?= $obat['kode']; ?>" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> edit</a>
+                    </td>
+                    <td>
+                      <a href="<?= BASEURL ?>/home/hapus/<?= $obat['kode']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin?')"><i class="bi bi-trash"></i> hapus</a>
+                    </td>
+                  <?php else : ?>
+                    <td>
+                      <a href="" class="btn btn-primary btn-sm"><i class="bi bi-bag-plus"></i> masukkan keranjang</a>
+                    </td>
+                  <?php endif ?>
                 </tr>
               <?php endforeach; ?>
             </tbody>
