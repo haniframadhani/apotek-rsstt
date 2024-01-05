@@ -19,7 +19,7 @@ class User_model
 
   public function getUser($kode)
   {
-    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE kode=:kode');
+    $this->db->query('SELECT * FROM apoteker WHERE kode=:kode');
     $this->db->bind('kode', $kode);
     return $this->db->single();
   }

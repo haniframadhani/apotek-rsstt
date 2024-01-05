@@ -18,6 +18,7 @@ class Login extends Controller
     $data['user'] = $this->model('User_model')->login($data['email']);
     if ($data['user'] == false || $data['password'] != $data['user']['password']) {
       $data['error'] = 'email atau password salah';
+      $data['title'] = 'login';
       $this->view('templates/header', $data);
       $this->view('login/index', $data);
       $this->view('templates/footer');
@@ -27,5 +28,11 @@ class Login extends Controller
     $_SESSION['kode_apoteker'] = $data['user']['kode_apoteker'];
     $_SESSION['level'] = $data['user']['level'];
     $_SESSION['nama'] = $data['detail']['nama'];
+    header('Location: ' . BASEURL . '/home');
+  }
+  public function logout()
+  {
+    session_destroy();
+    header('Location: ' . BASEURL . '/login');
   }
 }
