@@ -25,4 +25,21 @@ class Activity_model
     $this->db->execute();
     return $this->db->rowCount();
   }
+
+  public function tambah($obat, $apoteker)
+  {
+    $this->db->query("INSERT INTO $this->table (kode_apoteker, kode_obat, jumlah) VALUES (:apoteker, :obat, 1)");
+    $this->db->bind('obat', $obat);
+    $this->db->bind('apoteker', $apoteker);
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
+
+  public function oneObat($obat, $apoteker)
+  {
+    $this->db->query("SELECT * FROM  $this->table WHERE kode_apoteker = :apoteker AND kode_obat = :obat");
+    $this->db->bind('obat', $obat);
+    $this->db->bind('apoteker', $apoteker);
+    return $this->db->resultSet();
+  }
 }

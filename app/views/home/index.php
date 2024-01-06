@@ -59,7 +59,7 @@
                     </td>
                   <?php else : ?>
                     <td>
-                      <a href="" class="btn btn-primary btn-sm"><i class="bi bi-bag-plus"></i> masukkan keranjang</a>
+                      <a href="<?= BASEURL ?>/cart/tambah/<?= $obat['kode']; ?>" class="btn btn-primary btn-sm"><i class="bi bi-bag-plus"></i> masukkan keranjang</a>
                     </td>
                   <?php endif ?>
                 </tr>

@@ -13,12 +13,31 @@ class Cart extends Controller
   public function hapus($kode)
   {
     if ($this->model('Activity_model')->hapus($kode, $_SESSION['kode_apoteker']) > 0) {
-      Flasher::setFlash('berhasil', 'dihapus', 'success', 'obat');
+      Flasher::setFlash('berhasil', 'dihapus dari keranjang', 'success', 'obat');
       header('Location: ' . BASEURL . '/cart');
       exit;
     } else {
-      Flasher::setFlash('gagal', 'dihapus', 'danger', 'obat');
+      Flasher::setFlash('gagal', 'dihapus dari keranjang', 'danger', 'obat');
       header('Location: ' . BASEURL . '/cart');
+      exit;
+    }
+  }
+
+  public function tambah($kode)
+  {
+    if ($this->model('Activity_model')->oneObat($kode, $_SESSION['kode_apoteker']) == false) {
+      if ($this->model('Activity_model')->tambah($kode, $_SESSION['kode_apoteker']) > 0) {
+        Flasher::setFlash('berhasil', 'ditambahkan ke keranjang', 'success', 'obat');
+        header('Location: ' . BASEURL . '/home');
+        exit;
+      } else {
+        Flasher::setFlash('gagal', 'ditambahkan ke keranjang', 'danger', 'obat');
+        header('Location: ' . BASEURL . '/home');
+        exit;
+      }
+    } else {
+      Flasher::setFlash('sudah ada', 'dalam keranjang', 'danger', 'obat');
+      header('Location: ' . BASEURL . '/home');
       exit;
     }
   }
