@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="d-flex align-items-center justify-content-end gap-2 py-2">
-      <a href="">keranjang</a>
+      <a href="<?= BASEURL ?>/cart/">keranjang</a>
       <p class="m-0"><?= $_SESSION['nama'] ?></p>
       <a href="<?= BASEURL ?>/login/logout" class="btn btn-outline-danger btn-sm ">logout</a>
     </div>
