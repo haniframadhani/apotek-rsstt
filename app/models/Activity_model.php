@@ -42,4 +42,14 @@ class Activity_model
     $this->db->bind('apoteker', $apoteker);
     return $this->db->resultSet();
   }
+
+  public function editJumlah($obat, $apoteker, $jumlah)
+  {
+    $this->db->query("UPDATE $this->table SET jumlah = :jumlah WHERE kode_apoteker = :apoteker AND kode_obat = :obat");
+    $this->db->bind('obat', $obat);
+    $this->db->bind('apoteker', $apoteker);
+    $this->db->bind('jumlah', htmlspecialchars($jumlah));
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
 }

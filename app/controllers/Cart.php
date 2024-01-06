@@ -41,4 +41,19 @@ class Cart extends Controller
       exit;
     }
   }
+
+
+  public function editJumlah($kode)
+  {
+    $jumlah = $_POST['jumlah'];
+    if ($this->model('Activity_model')->editJumlah($kode, $_SESSION['kode_apoteker'], $jumlah) > 0) {
+      Flasher::setFlash('berhasil', 'diubah', 'success', 'jumlah');
+      header('Location: ' . BASEURL . '/cart');
+      exit;
+    } else {
+      Flasher::setFlash('gagal', 'diubah', 'danger', 'jumlah');
+      header('Location: ' . BASEURL . '/cart');
+      exit;
+    }
+  }
 }

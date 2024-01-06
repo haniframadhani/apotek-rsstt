@@ -26,7 +26,7 @@ $i = 1;
           <tbody class="">
             <?php foreach ($data['cart'] as $cart) : ?>
             <tr>
-              <form method="post">
+              <form method="post" action="<?= BASEURL ?>/cart/editJumlah/<?= $cart['kode_obat'] ?>">
                 <td><a href="<?= BASEURL ?>/home/detail/<?= $cart['kode_obat'] ?>"><?= $cart['kode_obat'] ?></a></td>
                 <td><a href="<?= BASEURL ?>/home/detail/<?= $cart['kode_obat'] ?>"><?= $cart['nama_generik'] ?></a></td>
                 <td><a href="<?= BASEURL ?>/home/detail/<?= $cart['kode_obat'] ?>"><?= $cart['nama_merek'] ?></a></td>
@@ -35,13 +35,14 @@ $i = 1;
                     <button class="btn btn-outline-secondary" type="button" id="minus<?= $i ?>"
                       onclick="count<?= $i ?>(this.id)"><i class="bi bi-dash"></i></button>
                     <input type="number" class="form-control flex-grow-0 w-25" min="1" max="<?= $cart['stok'] ?>"
-                      id="counter<?= $i ?>" value="1">
+                      id="counter<?= $i ?>" value="<?= $cart['jumlah'] ?>" name="jumlah">
                     <button class="btn btn-outline-secondary" type="button" id="plus<?= $i ?>"
                       onclick="count<?= $i ?>(this.id)"><i class="bi bi-plus"></i></button>
                   </div>
                 </td>
                 <td>
-                  <a href="<?= BASEURL ?>/cart/simpan" class="btn btn-primary"><i class="bi bi-floppy2"></i> simpan</a>
+                  <button class="btn btn-primary" type="submit" name="submit"><i class="bi bi-floppy2"></i>
+                    simpan</button>
                 </td>
                 <td>
                   <a href="<?= BASEURL ?>/cart/hapus/<?= $cart['kode_obat'] ?>" class="btn btn-danger"
