@@ -2,11 +2,16 @@
   <div class="row">
     <div class="col-lg-6">
       <?php Flasher::flash(); ?>
+      <?php Flasher::flashCheckout(); ?>
     </div>
   </div>
   <div class="row">
     <div class="d-flex align-items-center justify-content-end gap-2 py-2">
-      <a href="<?= BASEURL ?>/cart/">keranjang</a>
+      <?php if ($_SESSION['level'] == 'admin') : ?>
+        <a href="<?= BASEURL ?>/report/"><i class="bi bi-file-earmark-pdf"></i> report</a>
+      <?php else : ?>
+        <a href="<?= BASEURL ?>/cart/"><i class="bi bi-cart"></i> keranjang</a>
+      <?php endif ?>
       <p class="m-0"><?= $_SESSION['nama'] ?></p>
       <a href="<?= BASEURL ?>/login/logout" class="btn btn-outline-danger btn-sm ">logout</a>
     </div>
