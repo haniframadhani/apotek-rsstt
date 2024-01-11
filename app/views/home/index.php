@@ -26,7 +26,9 @@
             Cari</button>
         </div>
       </form>
-      <a href="<?= BASEURL ?>/home/tambahObat" class="btn btn-primary"><i class="bi bi-plus"></i> tambah obat</a>
+      <?php if ($_SESSION['level'] == 'admin') : ?>
+        <a href="<?= BASEURL ?>/home/tambahObat" class="btn btn-primary"><i class="bi bi-plus"></i> tambah obat</a>
+      <?php endif ?>
       <?php if (!empty($data['obat'])) : ?>
         <div class="table-responsive mt-2">
           <table class="table table-striped table-bordered table-hover">
