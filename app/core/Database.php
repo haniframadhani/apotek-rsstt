@@ -51,6 +51,21 @@ class Database
     $this->stmt->bindValue($param, $value, $type);
   }
 
+  public function beginTransaction()
+  {
+    $this->dbh->beginTransaction();
+  }
+
+  public function commit()
+  {
+    $this->dbh->commit();
+  }
+
+  public function rollBack()
+  {
+    $this->dbh->rollBack();
+  }
+
   public function execute()
   {
     $this->stmt->execute();
