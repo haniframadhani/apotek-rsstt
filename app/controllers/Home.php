@@ -12,6 +12,10 @@ class Home extends Controller
   }
   public function tambahObat()
   {
+    if ($_SESSION['level'] != 'admin') {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
     $data['title'] = 'tambah obat';
     $validator = $this->validate('Validate');
     $data['obat'] = $validator->getData();
@@ -31,6 +35,10 @@ class Home extends Controller
   }
   public function update($kode)
   {
+    if ($_SESSION['level'] != 'admin') {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
     $data['obat'] = $this->model('Obat_model')->getObatByKode($kode);
     $data['title'] = 'update ' . $data['obat']['nama_generik'] . ' / ' . $data['obat']['nama_merek'];
     $validator = $this->validate('Validate');
@@ -43,6 +51,10 @@ class Home extends Controller
   }
   public function tambah()
   {
+    if ($_SESSION['level'] != 'admin') {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
     $data['title'] = 'tambah obat';
     $data['obat'] = $_POST;
     $validator = $this->validate('Validate');
@@ -67,6 +79,10 @@ class Home extends Controller
   }
   public function hapus($id)
   {
+    if ($_SESSION['level'] != 'admin') {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
     if ($this->model('Obat_model')->hapusDataObat($id) > 0) {
       Flasher::setFlash('berhasil', 'dihapus', 'success', 'obat');
       header('Location: ' . BASEURL . '/home');
@@ -79,6 +95,10 @@ class Home extends Controller
   }
   public function ubah()
   {
+    if ($_SESSION['level'] != 'admin') {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
     $data['obat'] = $_POST;
     $tempDatabase = $this->model('Obat_model')->getObatByKode($data['obat']['kode']);
     $data['title'] = 'update ' . $tempDatabase['nama_generik'] . ' / ' . $tempDatabase['nama_merek'];
