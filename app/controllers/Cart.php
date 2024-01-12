@@ -4,7 +4,7 @@ class Cart extends Controller
   public function index()
   {
     $data['title'] = 'cart';
-    $data['cart'] = $this->model('Activity_model')->getAllActivity($_SESSION['kode_apoteker']);
+    $data['cart'] = $this->model('Activity_model')->getOneApotekerActivity($_SESSION['kode_apoteker']);
     $this->view('templates/header', $data);
     $this->view('cart/index', $data);
     $this->view('templates/footer');
@@ -59,7 +59,7 @@ class Cart extends Controller
   public function checkout($kode_apoteker)
   {
     $date = time();
-    $data['cart'] = $this->model('Activity_model')->getAllActivity($kode_apoteker);
+    $data['cart'] = $this->model('Activity_model')->getOneApotekerActivity($kode_apoteker);
     $i = 0;
     $barang = [];
     $barangString = '';
@@ -70,8 +70,6 @@ class Cart extends Controller
       $i++;
     }
     $str_cleaned = rtrim($barangString, ', ');
-    // var_dump($data['cart'], $barang, $str_cleaned);
-    // exit;
     if ($this->model('Activity_model')->checkout($kode_apoteker, $str_cleaned, $barang) <= 0) {
       Flasher::setFlashCheckout('gagal', 'danger');
       header('Location: ' . BASEURL . '/cart');
@@ -79,6 +77,6 @@ class Cart extends Controller
     }
     Flasher::setFlashCheckout('berhasil', 'success');
     header('Location: ' . BASEURL . '/home');
-    // exit;
+    exit;
   }
 }

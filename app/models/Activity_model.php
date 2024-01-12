@@ -11,10 +11,16 @@ class Activity_model
     $this->db = new Database;
   }
 
-  public function getAllActivity($apoteker)
+  public function getOneApotekerActivity($apoteker)
   {
-    $this->db->query("SELECT cart.kode_obat, cart.jumlah, obat.nama_generik, obat.nama_merek, obat.harga, obat.stok FROM " . $this->tableCart . " INNER JOIN obat ON cart.kode_obat = obat.kode WHERE kode_apoteker = :apoteker");
+    $this->db->query("SELECT cart.kode_obat, cart.jumlah, obat.nama_generik, obat.nama_merek, obat.harga, obat.stok FROM $this->tableCart INNER JOIN obat ON cart.kode_obat = obat.kode WHERE kode_apoteker = :apoteker");
     $this->db->bind('apoteker', $apoteker);
+    return $this->db->resultSet();
+  }
+
+  public function getAllApotekerActivity()
+  {
+    $this->db->query("SELECT activity_log.id,activity_log.time,activity_log.jumlah,obat.kode as 'kode_obat',obat.nama_generik,obat.nama_merek,obat.harga,apoteker.kode as 'kode_apoteker',apoteker.nama as 'nama_apoteker' FROM ((activity_log INNER JOIN obat ON activity_log.kode_obat = obat.kode ) INNER JOIN apoteker ON activity_log.kode_apoteker = apoteker.kode) ORDER BY activity_log.time DESC");
     return $this->db->resultSet();
   }
 
