@@ -21,22 +21,28 @@ USE `apotek_rsstt`;
 
 -- Dumping structure for table apotek_rsstt.activity_log
 CREATE TABLE IF NOT EXISTS `activity_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `time` int NOT NULL,
   `kode_apoteker` int NOT NULL,
-  PRIMARY KEY (`time`),
+  `kode_obat` int NOT NULL,
+  `jumlah` int NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `kode_apoteker` (`kode_apoteker`),
-  CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`)
+  KEY `kode_apoker` (`kode_obat`),
+  CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`kode_obat`) REFERENCES `obat` (`kode`),
+  CONSTRAINT `activity_log_ibfk_2` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table apotek_rsstt.akun
 CREATE TABLE IF NOT EXISTS `akun` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `kode_apoteker` int NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `level` varchar(50) NOT NULL,
-  `akses` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `kode_apotek` (`kode_apoteker`),
   CONSTRAINT `akun_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -47,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `akun` (
 CREATE TABLE IF NOT EXISTS `apoteker` (
   `kode` int NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
-  `foto` varchar(255) NOT NULL,
   `tanggal_lahir` date NOT NULL,
   `jenis_kelamin` varchar(50) NOT NULL,
   PRIMARY KEY (`kode`)
@@ -55,15 +60,17 @@ CREATE TABLE IF NOT EXISTS `apoteker` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table apotek_rsstt.daftar_ambil_obat
-CREATE TABLE IF NOT EXISTS `daftar_ambil_obat` (
-  `time` int NOT NULL,
+-- Dumping structure for table apotek_rsstt.cart
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `kode_apoteker` int NOT NULL,
   `kode_obat` int NOT NULL,
   `jumlah` int NOT NULL,
-  KEY `time` (`time`),
+  PRIMARY KEY (`id`),
+  KEY `kode_apoteker` (`kode_apoteker`,`kode_obat`),
   KEY `kode_obat` (`kode_obat`),
-  CONSTRAINT `daftar_ambil_obat_ibfk_1` FOREIGN KEY (`kode_obat`) REFERENCES `obat` (`kode`),
-  CONSTRAINT `daftar_ambil_obat_ibfk_2` FOREIGN KEY (`time`) REFERENCES `activity_log` (`time`)
+  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`kode_apoteker`) REFERENCES `apoteker` (`kode`),
+  CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`kode_obat`) REFERENCES `obat` (`kode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
@@ -86,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `obat` (
   PRIMARY KEY (`kode`),
   KEY `idx_kode` (`kode`),
   KEY `idx_nama` (`nama_generik`,`nama_merek`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
